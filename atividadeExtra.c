@@ -1,12 +1,7 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-/*int main(){
-    printf("Hello world");
-    
-    return 0;
-}*/
-
+// returns x where (a * x) % b == 1
 int mul_inv(int a, int b)
 {
 	int b0 = b, t, q;
@@ -36,10 +31,25 @@ int chinese_remainder(int *n, int *a, int len)
 }
 
 int main(void)
-{	
-	int n[] = { 3, 5, 7 };
-	int a[] = { 2, 3, 2 };
+{
+    int k;
+    scanf("%d", &k);
 
+	int n[k],a[k], b[k];
+
+    for(int i = 0; i< k; i++){
+
+        printf("Informe o valor de n%d \n", i+1);
+        scanf("%d", &n[i]);
+
+        printf("Informe o valor de a%d \n", i+1);
+        scanf("%d", &a[i]);
+
+
+       /* printf("Informe o valor de b%d \n", i+1);
+        scanf("%d", &b[i]);*/
+
+    }
 	printf("%d\n", chinese_remainder(n, a, sizeof(n)/sizeof(n[0])));
 	return 0;
 }
