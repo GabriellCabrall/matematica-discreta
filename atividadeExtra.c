@@ -16,23 +16,26 @@ int mul_inv(int a, int b)
 	return x1;
 }
 
-int chinese_remainder(int *n, int *a, int len)
+int teorema_chines(int *n, int *a, int k)
 {
 	int p, i, prod = 1, sum = 0;
 
-	for (i = 0; i < len; i++) prod *= n[i];
+	for (i = 0; i < k; i++) prod *= n[i];
 
-	for (i = 0; i < len; i++) {
+	for (i = 0; i < k; i++) {
 		p = prod / n[i];
 		sum += a[i] * mul_inv(p, n[i]) * p;
 	}
 
-	return sum % prod;
+    printf("X = %d , N = %d",sum % prod, prod);
+	
+	return 0;
 }
 
 int main(void)
 {
     int k;
+	printf("Informe o k \n");
     scanf("%d", &k);
 
 	int n[k],a[k], b[k];
@@ -50,6 +53,6 @@ int main(void)
         scanf("%d", &b[i]);*/
 
     }
-	printf("%d\n", chinese_remainder(n, a, sizeof(n)/sizeof(n[0])));
+	teorema_chines(n, a, sizeof(n)/sizeof(n[0]));
 	return 0;
 }
